@@ -1,0 +1,34 @@
+.formLogin {
+  margin: 50px;
+  padding: 50px;
+  border: 1px orange solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.loginDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40%;
+}
+input {
+  padding: 10px;
+  margin: 10px 0;
+
+}
+button {
+  background-color: orange;
+  color: white;
+  outline: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+button:hover,
+button:active {
+  cursor: pointer;
+  transform: scale(1.01);
+  font-size: 110%;
+}

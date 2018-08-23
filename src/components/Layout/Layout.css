@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: green;
+  padding: 50px;
+}
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;  
+}
+a {
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  color: antiquewhite;
+  text-transform: uppercase;
+}

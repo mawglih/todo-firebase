@@ -3,24 +3,43 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 0 0 40%;
+  width: 60%;
 }
 .todoUl {
-  width: 250px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .todoLi {
-  align-self: center;
+  display: block;
+  max-width: 100%;
+  padding: 10px;
+  margin: 0 auto;
 }
 .todoTitle {
   background-color: green;
   color: white;
   padding: 5px;
+  width: 100px;
+  text-align: center;
 }
 .todoText {
   font-weight: bold;
-  width: 50px;
   margin: 10px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid navajowhite;
+  display: inline-block;
+}
+.deleteButton {
+  float: right;
+  padding: 5px;
+}
+.deleteButton:hover,
+.deleteButton:active {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: red;
 }

@@ -1,23 +1,31 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Home from 'components/Home';
-import TodoItem from 'components/TodoItem';
+import Login from 'components/Login';
 import {
   HOME as HOME_URL,
-  TODO_ITEM as TODO_ITEM_URL,
+  LOGIN as LOGIN_URL,
 } from './constants';
 
-export default () => (
+const Routes = (props) => (
   <Switch>
     <Route
       exact
       path={HOME_URL}
-      component={Home}
+      component={props.auth ? Home : Login}
     />
     <Route
-      exact
-      path={TODO_ITEM_URL}
-      component={TodoItem}
+      path={LOGIN_URL}
+      component={props.auth? Home : Login}
     />
   </Switch>
 );
+
+const mapStateToProps = state => {
+  return{
+    auth: state.auth.auth.loggedIn,
+  };
+};
+
+export default connect(mapStateToProps, null)(Routes);

@@ -12,8 +12,8 @@ const AddTodo = (props) => (
         e.preventDefault();
         let input = e.target.todo.value;
         let textInput = e.target.textTodo.value;
-        console.log("input: ", input);
-        props.addTodo(input, textInput);
+        let dateInput = e.target.date.value;
+        props.addTodo(input, textInput, dateInput);
     }}>
       <input
         className={styles.inputTodo}
@@ -28,6 +28,11 @@ const AddTodo = (props) => (
         placeholder="Enter TODO text"
         rows="10"
         cols="50"
+      />
+      <input 
+        className={styles.inputDate}
+        type="datetime-local"
+        name="date"
       />
       <button
         type="submit"
@@ -45,8 +50,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  console.log("state is: ", state);
-  console.log("todos", state.todos.data);
   return {
     todos: state.todos.data,
   }

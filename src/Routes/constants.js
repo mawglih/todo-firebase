@@ -1,7 +1,9 @@
 export const HOME = '/';
-export const TODO_ITEM = '/todo/:id';
+export const LOGIN = '/login';
+export const DELETED = '/deleted';
 
 export default {
   HOME,
-  TODO_ITEM,
+  LOGIN,
+  DELETED,
 };
