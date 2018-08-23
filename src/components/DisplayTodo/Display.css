@@ -1,0 +1,26 @@
+.todoDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40%;
+}
+.todoUl {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todoLi {
+  align-self: center;
+}
+.todoTitle {
+  background-color: green;
+  color: white;
+  padding: 5px;
+}
+.todoText {
+  font-weight: bold;
+  width: 50px;
+  margin: 10px;
+}

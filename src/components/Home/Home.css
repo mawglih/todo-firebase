@@ -1,0 +1,16 @@
+.formTodo {
+  width: 100%;
+}
+.formDiv {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 20px;
+}
+.HomeDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}

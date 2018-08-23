@@ -1,0 +1,27 @@
+.formTodo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 20px;
+}
+.inputTodo {
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.buttonTodo {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: none;
+}
+.textTodo {
+  width: 100%;
+  padding: 5px;
+  margin: 10px;
+}
