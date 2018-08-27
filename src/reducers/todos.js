@@ -28,6 +28,7 @@ const Todos = (state = INITIAL_STATE, action) => {
           text1: action.text1,
           text2: action.text2,
           date: action.date,
+          option: action.option,
         }],
       };
 

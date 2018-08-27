@@ -4,6 +4,13 @@ import { bindActionCreators } from 'redux';
 import { addTodo } from 'actions';
 import styles from './Addtodo.css';
 
+const typesOfTodo = [
+  'dry cleaning',
+  'purchases',
+  'sport',
+  'leisure',
+];
+
 const AddTodo = (props) => (
   <div>
     <form 
@@ -13,7 +20,8 @@ const AddTodo = (props) => (
         let input = e.target.todo.value;
         let textInput = e.target.textTodo.value;
         let dateInput = e.target.date.value;
-        props.addTodo(input, textInput, dateInput);
+        let option = e.target.selected.value;
+        props.addTodo(input, textInput, dateInput, option);
     }}>
       <input
         className={styles.inputTodo}
@@ -34,6 +42,17 @@ const AddTodo = (props) => (
         type="datetime-local"
         name="date"
       />
+      <select
+        type="select"
+        defaultValue=""
+        name="selected"
+      >
+        {typesOfTodo.map((el, index) => {
+          return <option key={index} value={el}>
+            {el}
+          </option>
+        })}
+      </select>
       <button
         type="submit"
         className={styles.buttonTodo}

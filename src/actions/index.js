@@ -5,12 +5,13 @@ import {
   LOGOUT_TODO,
 } from 'constants/actionTypes';
 
-export const addTodo = (text1, text2, date) => {
+export const addTodo = (text1, text2, date, option) => {
   const action = {
     type: ADD_TODO,
     text1,
     text2,
     date,
+    option,
     id: Math.floor(Math.random()*1000000000),
   }
   return action;

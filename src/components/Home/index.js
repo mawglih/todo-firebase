@@ -19,9 +19,7 @@ const Auth = () => {
 }
 
 class Home extends Component {
-componentDidMount() {
-  console.log('state of auth is: ', this.props.auth);
-}
+
   renderRedirect = () => !this.props.auth ? (<Redirect to='/login'/>) : <Auth />
   render() { 
     return (
