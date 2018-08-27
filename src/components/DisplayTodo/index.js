@@ -7,22 +7,18 @@ import styles from './Display.css';
 class DisplayTodo extends Component {
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       filtered: '',
-    };
+    }
   }
-  
   render() {
-    const {
-      todos,
-    } = this.props;
-
-    return (
+    return(
       <div className={styles.todoDiv}>
       <input type="text" onChange={(e) => this.setState({ filtered: e.target.value})} />
         <div className={styles.todoUl}>
           {
-            todos.filter(word => word.option.includes(this.state.filtered))
+            this.props.todos
+            .filter(todo => todo.option.includes(this.state.filtered))
             .map(el => {
               return (
                 <div key={el.id} className={styles.todoLi}>
@@ -39,7 +35,7 @@ class DisplayTodo extends Component {
                   </h5>
                   <p className={styles.todoText}>{el.text2}</p>
                   <div
-                    onClick={()=>deleteTodo(el.id)}
+                    onClick={()=>this.props.deleteTodo(el.id)}
                     className={styles.deleteButton}
                   >
                     &#x2715;
@@ -50,10 +46,12 @@ class DisplayTodo extends Component {
           }        
         </div>
       </div>
+
     );
   }
 }
-  
+      
+
 const mapStateToProps = state => {
   return {
     todos: state.todos.data,

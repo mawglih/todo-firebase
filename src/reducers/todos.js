@@ -1,6 +1,7 @@
 import {
   ADD_TODO,
   DELETE_TODO,
+  CLEAR_ITEMS,
 } from 'constants/actionTypes';
 
 const INITIAL_STATE = {
@@ -36,6 +37,11 @@ const Todos = (state = INITIAL_STATE, action) => {
       return {
         data: removeById(state.data, action.id),
         deleted: state.deleted.concat(deletedById(state.data, action.id)),       
+      };
+
+    case CLEAR_ITEMS:
+      return {
+        deleted: [],
       };
 
     default:

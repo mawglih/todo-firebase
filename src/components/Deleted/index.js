@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { clearItems } from 'actions';
 import moments from 'moment';
 import Layout from 'components/Layout';
 import styles from './Deleted.css';
@@ -8,7 +9,7 @@ const DisplayTodo = (props) => (
   <Layout>
     <div className={styles.todoDiv}>
       <h1>Deleted items:</h1>
-      {/* <div className={styles.todoUl}>
+      <div className={styles.todoUl}>
         {
           props.todos.map(el => {
             return (
@@ -20,12 +21,22 @@ const DisplayTodo = (props) => (
                   <span>Was due: </span>
                   {moments(new Date(el.date)).fromNow()}
                 </h4>
+                <h5>
+                    <span>Type of Todo: </span>
+                    {el.option}
+                  </h5>
                 <p className={styles.todoText}>{el.text2}</p>
               </div>
             );
           })
         }        
-      </div> */}
+      </div>
+      <button
+        className={styles.bigButton}
+        onClick={props.clearItems}
+      >
+        Clear deleted items
+      </button>
     </div>
   </Layout>
 
@@ -36,4 +47,4 @@ const DisplayTodo = (props) => (
     }
   }
   
-  export default connect(mapStateToProps, null)(DisplayTodo);
+  export default connect(mapStateToProps, { clearItems })(DisplayTodo);
