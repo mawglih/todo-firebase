@@ -1,31 +1,35 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Switch, Route} from 'react-router-dom';
 import Home from 'components/Home';
 import Login from 'components/Login';
+import Deleted from 'components/Deleted';
 import {
   HOME as HOME_URL,
   LOGIN as LOGIN_URL,
+  DELETED as DELETED_URL,
 } from './constants';
 
-const Routes = (props) => (
+const Routes = ({
+  auth,
+}) => (
   <Switch>
     <Route
+      path={DELETED_URL}
       exact
-      path={HOME_URL}
-      component={props.auth ? Home : Login}
+      component={Deleted}
     />
     <Route
       path={LOGIN_URL}
-      component={props.auth? Home : Login}
+      exact
+      component={Login}
     />
-  </Switch>
+    <Route
+      exact
+      path={HOME_URL}
+      component={Home}
+    />
+  </Switch>  
 );
 
-const mapStateToProps = state => {
-  return{
-    auth: state.auth.auth.loggedIn,
-  };
-};
 
-export default connect(mapStateToProps, null)(Routes);
+export default Routes;

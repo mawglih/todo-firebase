@@ -1,10 +1,11 @@
-import React from 'react';
+import React,  { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginTodo } from 'actions';
 import Layout from 'components/Layout';
 import styles from './Login.css';
 
-const Login = (props) => (
+const Auth = (props) => (
   <Layout>
     <div className={styles.loginDiv}>
       <form 
@@ -43,4 +44,21 @@ const Login = (props) => (
   </Layout>
 );
 
-export default connect(null,{ loginTodo })(Login);
+class Login extends Component {
+  renderRedirect = () => this.props.auth ? (<Redirect to='/'/>) : <Auth loginTodo={this.props.loginTodo} />
+  render() {
+    return(
+      <div>
+        {this.renderRedirect()}
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth.auth.loggedIn
+  }
+}
+
+export default connect(mapStateToProps, { loginTodo })(Login);

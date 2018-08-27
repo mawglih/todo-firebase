@@ -37,6 +37,9 @@ const LoggedIn = () => {
       <Link to="/">
         Home
       </Link>
+      <Link to="/deleted">
+        Deleted
+      </Link>
     </div>
   </Fragment>
   );
