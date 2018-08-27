@@ -40,7 +40,9 @@ const Todos = (state = INITIAL_STATE, action) => {
       };
 
     case CLEAR_ITEMS:
-      return {...state,
+      return {
+        ...state,
+        deleted: [],
       };
 
     default:

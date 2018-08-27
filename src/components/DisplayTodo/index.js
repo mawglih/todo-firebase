@@ -17,8 +17,8 @@ class DisplayTodo extends Component {
       <input type="text" onChange={(e) => this.setState({ filtered: e.target.value})} />
         <div className={styles.todoUl}>
           {
-            this.props.todos
-            .filter(todo => todo.option.includes(this.state.filtered))
+            this.props.todos ?
+            this.props.todos.filter(todo => todo.option.includes(this.state.filtered))
             .map(el => {
               return (
                 <div key={el.id} className={styles.todoLi}>
@@ -42,7 +42,7 @@ class DisplayTodo extends Component {
                   </div>
                 </div>
               );
-            })
+            }) : <h1>No todo items</h1>
           }        
         </div>
       </div>
