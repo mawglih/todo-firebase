@@ -1,77 +1,92 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { reduxForm, Field } from 'redux-form';
+import { bindActionCreators, compose } from 'redux';
 import { addTodo } from 'actions';
 import styles from './Addtodo.css';
 
-const typesOfTodo = [
+const Todo = [
   'dry cleaning',
   'purchases',
   'sport',
   'leisure',
 ];
 
-const AddTodo = (props) => (
-  <div>
-    <form 
-      className={styles.formTodo}
-      onSubmit={(e) => {
-        e.preventDefault();
-        let input = e.target.todo.value;
-        let textInput = e.target.textTodo.value;
-        let dateInput = e.target.date.value;
-        let option = e.target.selected.value;
-        props.addTodo(input, textInput, dateInput, option);
-    }}>
-      <input
-        className={styles.inputTodo}
-        type="text"
-        name="todo" 
-        placeholder="Enter TODO title"
-      />
-      <textarea
-        className={styles.textTodo}
-        type="text"
-        name="textTodo" 
-        placeholder="Enter TODO text"
-        rows="10"
-        cols="50"
-      />
-      <input 
-        className={styles.inputDate}
-        type="datetime-local"
-        name="date"
-      />
-      <select
-        type="select"
-        defaultValue=""
-        name="selected"
+const renderSelectField = ({ input: { onChange, value }, options }) => (
+  <select
+    onChange={onChange}
+    className={`${styles.input} ${styles.options}`}
+    value={value}
+  >
+    {options.map(el => (
+      <option
+        key={el}
+        value={el}
       >
-        {typesOfTodo.map((el, index) => {
-          return <option key={index} value={el}>
-            {el}
-          </option>
-        })}
-      </select>
-      <button
-        type="submit"
-        className={styles.buttonTodo}
-      >
-        Add TODO
-      </button>
-    </form>
-  </div>
+        {el}
+      </option>
+    ))
+    }
+  </select>
 );
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators ({
-    addTodo
-  }, dispatch);
-};
 
-const mapStateToProps = state => {
-  return {
-    todos: state.todos.data,
+class AddTodo extends Component {
+  onSubmit = (formProps) => {
+    console.log("formProps addTodo: ", formProps);
+    this.props.addTodo(formProps);
+  }
+  render() {
+    const {
+      handleSubmit,
+    } = this.props;
+    return(
+      <div>
+        <form 
+          className={styles.formTodo}
+          onSubmit={handleSubmit(this.onSubmit)}
+        >
+          <Field
+            className={styles.inputTodo}
+            type="text"
+            name="todo" 
+            placeholder="Enter TODO title"
+            component="input"
+          />
+          <Field
+            className={styles.textTodo}
+            type="text"
+            name="textTodo" 
+            component="textarea"
+            placeholder="Enter TODO text"
+            rows="10"
+            cols="50"
+          />
+          <Field
+            className={styles.inputDate}
+            type="datetime-local"
+            name="date"
+            component="input"
+          />
+          <Field
+            options={Todo}
+            name="todo2"
+            component={renderSelectField}
+          />
+          <button
+            type="submit"
+            className={styles.buttonTodo}
+          >
+            Add TODO
+          </button>
+        </form>
+      </div>
+    );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);
+export default compose(
+  connect(null, { addTodo }),
+  reduxForm({
+    form: 'addTodo',
+  })
+)(AddTodo);

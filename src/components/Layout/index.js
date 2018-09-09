@@ -18,9 +18,15 @@ const Layout = (props) => {
 
 const LogIn = () => {
   return(
-    <Link to="/login">
-      Login
-    </Link>
+    <Fragment>
+      <Link to="/login">
+        Login
+      </Link>
+      <Link to="/signup">
+        Sign Up
+      </Link>
+    </Fragment>
+    
   );
 }
 

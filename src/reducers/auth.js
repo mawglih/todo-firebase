@@ -1,5 +1,5 @@
 import {
-  LOGIN_TODO,
+  LOGIN_SUCCESS,
   LOGOUT_TODO,
 } from 'constants/actionTypes';
 
@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 
 const Auth = (state = INITIAL_STATE, action) => {
   switch(action.type) {
-    case LOGIN_TODO:
+    case LOGIN_SUCCESS:
     return {
       ...state,
         auth: {...state.auth, 

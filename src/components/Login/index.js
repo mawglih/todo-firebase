@@ -1,7 +1,7 @@
 import React,  { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginTodo } from 'actions';
+import { loginStart } from 'actions';
 import Layout from 'components/Layout';
 import styles from './Login.css';
 
@@ -14,7 +14,7 @@ const Auth = (props) => (
           e.preventDefault();
           let email = e.target.emailLogin.value;
           let password = e.target.passwordLogin.value;
-          props.loginTodo(email, password);
+          props.loginStart(email, password);
       }}>
         <input
           className={styles.inputLogin}
@@ -45,7 +45,7 @@ const Auth = (props) => (
 );
 
 class Login extends Component {
-  renderRedirect = () => this.props.auth ? (<Redirect to='/'/>) : <Auth loginTodo={this.props.loginTodo} />
+  renderRedirect = () => this.props.auth ? (<Redirect to='/'/>) : <Auth loginStart={this.props.loginStart} />
   render() {
     return(
       <div>
@@ -61,4 +61,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { loginTodo })(Login);
+export default connect(mapStateToProps, { loginStart })(Login);

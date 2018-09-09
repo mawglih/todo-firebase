@@ -2,6 +2,7 @@ import {
   ADD_TODO,
   DELETE_TODO,
   CLEAR_ITEMS,
+  GET_TODO,
 } from 'constants/actionTypes';
 
 const INITIAL_STATE = {
@@ -21,7 +22,7 @@ const deletedById = (state = [], id) => {
 
 const Todos = (state = INITIAL_STATE, action) => {
   switch(action.type) {
-    case ADD_TODO:
+    case GET_TODO:
       return {
         ...state,
         data: [...state.data, {
